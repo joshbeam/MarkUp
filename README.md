@@ -28,7 +28,7 @@ Cat.prototype = {
 
 - No support for regular expressions in `pre` elements
 - Uses a bit of 'hackish' CSS to compensate for issues with regexes in the JS
-- Inconsistent type highlighting
+- Some arbitrary type highlighting
 
 <hr>
 
