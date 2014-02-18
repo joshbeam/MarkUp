@@ -1,0 +1,31 @@
+pre {
+	color: #bbb;
+	background-color: #555;
+}
+
+.markup-operator {
+	color: #988e7c;
+}
+.markup-comment, .markup-comment span { /*any span inside the comment should be the same color as the comment*/
+	color: #777;
+}
+
+.markup-string, pre > .markup-string > span { /*any span inside the string should be the same color as the string*/
+	color: #bfb57e;
+}
+
+.markup-method {
+	color: #689a68;
+}
+
+.markup-keyword {
+	color: #87aeba;
+}
+
+.markup-proto, .markup-key {
+	color: #9d6f9d;
+}
+
+.markup-digit {
+	color: #967436;
+}

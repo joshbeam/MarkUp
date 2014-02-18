@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/markup.css" />
+	</head>
+	<body>
+<pre>
+function Cat(name) {
+	this.name = name;
+}
+
+Cat.prototype = {
+	meow: function() {
+		alert('meow');
+	}
+}
+</pre>
+		
+		<script src="src/markup.js"></script>
+		<script>
+			console.time('Mark^');
+			markup(document.getElementsByTagName('pre'));
+			console.timeEnd('Mark^');
+		</script>
+	</body>
+</html>
