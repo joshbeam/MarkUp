@@ -1,7 +1,7 @@
 # Mark^
 *\ˈmärk ˈəp\*
 
-A JavaScript-powered syntax highlighter for `pre` elements. (Currently in first stages of development; not for production use.)
+A JavaScript syntax highlighter for `pre` elements. (Currently in first stages of development; not for production use.)
 
 **Forks are welcome and encouraged.**
 
@@ -29,6 +29,7 @@ Cat.prototype = {
 - No support for regular expressions in `pre` elements
 - Uses a bit of 'hackish' CSS to compensate for issues with regexes in the JS
 - Some arbitrary type highlighting
+- Only minor support for HTML sytnax highlighting
 
 <hr>
 
