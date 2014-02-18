@@ -32,7 +32,7 @@ markup = function(element) {
 			
 			digit: [/(\d+)(?![\w'"\%])/g,'<span class="markup-digit">$1</span>'],
 			
-			key: [/(['"]{0,1})([^"'\n\r]+\1:\s*)(?=(?:<(\w+)[\s\w-="']*>)?(['"]{0,1})[^'"\n\r]*\4(?:<\/\3>)?|\s*{|function\s*\(\)\s*{)/g,'<span class="markup-key">$2</span>'],
+			key: [/(['"]{0,1})([^"'\n\r(?:\/\/)>]+\1:\s*)(?=(?:<(\w+)[\s\w-="']*>)?(['"]{0,1})[^'"\n\r]*\4(?:<\/\3>)?|\s*{|function\s*\(\)\s*{)/g,'<span class="markup-key">$2</span>'],
 			
 			operator: [/(\||&(?![gl])|!|={2,3}|\+)/g,'<span class="markup-operator">$1</span>'],
 			

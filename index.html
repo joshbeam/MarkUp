@@ -5,15 +5,41 @@
 	</head>
 	<body>
 <pre>
+//Make a Cat constructor:
 function Cat(name) {
 	this.name = name;
 }
 
+//Give the Cat some properties:
 Cat.prototype = {
 	meow: function() {
 		alert('meow');
-	}
+	},
+	big: false
 }
+
+//Create a cat:
+var cat = new Cat('Jacob');
+
+cat.meow(); // ==> 'meow'
+
+//Some random stuff:
+;(function(context, obj) {
+
+	context.obj = obj;
+
+	var i = 10;
+
+	while(i >= 0) {
+		var cat = new obj();
+		cat.meow();
+	}
+
+	if( i===0 ) {
+		console.log('no more cats to meow');
+	}
+
+})(this, Cat);
 </pre>
 		
 		<script src="src/markup.js"></script>
