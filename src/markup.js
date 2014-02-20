@@ -15,17 +15,21 @@ function markup(element) {
 	
 	var elements = [].slice.call(element), i, j, numberOfElements = elements.length, tokens = [];
 				
-	function push(m,string,quote,comment,number,operator,key,bool,proto) {
+	function push(m,string,quote,comment,number,operator,key,bool,proto,regex) {
 		var type = "";
 		
-		if(string!==undefined||bool!==undefined) type = 'string';
+		if(string!==undefined||bool!==undefined||regex!==undefined) type = 'string';
 		if(comment!==undefined) type = 'comment';
 		if(number!==undefined) type = 'number';
 		if(operator!==undefined) type = 'operator';
 		if(key!==undefined) type = 'key';
 		if(proto!==undefined) type = 'proto';
 		
-		return '{!'+tokens.push('<span class="markup-'+type+'">'+m+'</span>')+'}';	
+		//Tokens are temporarily replaced with <!1>
+		//This resembles a tag, and this type of tag would never be used in a pre element
+		//Even if it was, and the user wanted to display it, it would have to be written at &lt;!1&gt;
+		//This is a better alternative than some pseudo-random token, like {!token-12937:match1}, etc.
+		return '<!'+tokens.push('<span class="markup-'+type+'">'+m+'</span>')+'>';	
 	}
 	
 	function pop(m,i) {
@@ -34,13 +38,14 @@ function markup(element) {
 	
 	var regexes = [
 		
-		new RegExp('((["\']{1})[^"\'\\r\\n]*\\2)|' +	//	string
-				   '(\\/\\/[^\\n\\r]*)|' +				//	single-line comment
-				   '(\\d+)|' +							//	number
-				   '(&lt;=?|&gt;=?|===?)|' +			//	operator
-				   '(\\w+)(?=:)|' +						//	key
-				   '(true|false)|' +					//	bool
-				   '([A-Z]\\w*)',						//	proto
+		new RegExp('((["\']{1})[^"\'\\r\\n]*\\2)|' +    //	string
+				   '(\\/\\/[^\\n\\r]*|\\/\\*+[^(?:\\*\\/)]*\\*+\\/)|' +              //	comment
+				   '(\\d+)|' +                          //	number
+				   '(&lt;=?|&gt;=?|===?)|' +            //	operator
+				   '([\\w-_]+)(?=:)|' +                    //	key
+				   '(true|false)|' +                    //	bool
+				   '([A-Z]\\w*)|' +                       //	proto
+				   '(\\/[^\\*][^\\/]*\\/[gmi]*(?![^gmi]))',
 				   'g'),
 //		/((["']{1})[^"'\r\n]*\2)|(\/\/[^\n\r]*)|(\d+)|(&lt;=?|&gt;=?|===?)/g,
 		push,
@@ -54,7 +59,7 @@ function markup(element) {
 		'<span class="markup-keyword">$1</span>',
 
 		//replace token marks, like {!1}, with their respective <span>match</span> from the tokens array
-		/{!(\d+)}/g,
+		/<!(\d+)>/g,
 		pop
 	], len = regexes.length;
 	
