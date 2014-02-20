@@ -1,15 +1,25 @@
 # Mark^
-*\ˈmärk ˈəp\*
+*\mark up\*
 
-A JavaScript syntax highlighter for `pre` elements. (Currently in first stages of development; not for production use.)
+A no-dependency JavaScript syntax highlighter for `pre` elements.
 
-**Forks are welcome and encouraged.**
+It currently weighs in at around **860 bytes**.
+
+<hr>
 
 ### Use it:
+This goes at the end of the `body`:
+```html
+<script src="markup.js"></script>
+```
+<br><br>
+This comes after the markup.js source:
 ```javascript
 markup(document.getElementById('#foo'));
 ```
 
+<br><br>
+And this goes wherever:
 ```html
 <pre id="foo">
 function Cat(name) {
@@ -23,13 +33,11 @@ Cat.prototype = {
 }
 </pre>
 ```
+### Issues:
 
-**Issues**
-
-- No support for regular expressions in `pre` elements
-- Uses a bit of 'hackish' CSS to compensate for issues with regexes in the JS
+- No support (yet) for regular expressions in `pre` elements
 - Some arbitrary type highlighting
-- Only minor support for HTML sytnax highlighting
+- No support for languages !== JavaScript
 
 <hr>
 
