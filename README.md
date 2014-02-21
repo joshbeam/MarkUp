@@ -1,6 +1,8 @@
 # Mark^
 *\mark up\*
 
+**Version 0.1.1**
+
 A no-dependency JavaScript syntax highlighter for `pre` elements.
 
 It currently weighs in at around **860 bytes**.
@@ -33,9 +35,7 @@ Cat.prototype = {
 }
 </pre>
 ```
-### Issues:
-
-- No support (yet) for regular expressions in `pre` elements
+### Known Issues:
 - Some arbitrary type highlighting
 - No support for languages !== JavaScript
 
