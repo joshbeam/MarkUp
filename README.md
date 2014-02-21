@@ -5,7 +5,7 @@
 
 A no-dependency JavaScript syntax highlighter for `pre` elements.
 
-It currently weighs in at around **860 bytes**.
+It currently weighs in at around **920 bytes**.
 
 <hr>
 
